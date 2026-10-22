@@ -14,17 +14,49 @@
 
 ## Features
 
-Comprehensive examples covering 90%+ of ClickUp API v2 endpoints:
+TypeScript client library with comprehensive API coverage:
+
+### Core Client Methods
+
+| Method | Category | Description | API Docs |
+|--------|----------|-------------|----------|
+| `getUser()` | Authentication | Get authenticated user information | [API Ref](https://developer.clickup.com/reference/getauthorizeduser) |
+| `getWorkspaces()` | Workspaces | List accessible workspaces (teams) | [API Ref](https://developer.clickup.com/reference/getauthorizedteams) |
+| `getSpaces()` | Spaces | List spaces in workspace | [API Ref](https://developer.clickup.com/reference/getspaces) |
+| `getSpace()` | Spaces | Get space by ID | [API Ref](https://developer.clickup.com/reference/getspace) |
+| `getFolders()` | Folders | List folders in space | [API Ref](https://developer.clickup.com/reference/getfolders) |
+| `getLists()` | Lists | Get lists in folder | [API Ref](https://developer.clickup.com/reference/getlists) |
+| `getFolderlessLists()` | Lists | Get folderless lists in space | [API Ref](https://developer.clickup.com/reference/getfolderlesslists) |
+| `getTask()` | Tasks | Get task by ID | [API Ref](https://developer.clickup.com/reference/gettask) |
+| `createTask()` | Tasks | Create new task | [API Ref](https://developer.clickup.com/reference/createtask) |
+| `updateTask()` | Tasks | Update existing task | [API Ref](https://developer.clickup.com/reference/updatetask) |
+| `deleteTask()` | Tasks | Delete task | [API Ref](https://developer.clickup.com/reference/deletetask) |
+| `getTasks()` | Tasks | Get tasks in list (paginated) | [API Ref](https://developer.clickup.com/reference/gettasks) |
+| `paginateTasks()` | Tasks | Async generator for all tasks | [API Ref](https://developer.clickup.com/reference/gettasks) |
+| `addDependency()` | Dependencies | Add task dependency | [API Ref](https://developer.clickup.com/reference/adddependency) |
+| `deleteDependency()` | Dependencies | Remove task dependency | [API Ref](https://developer.clickup.com/reference/deletedependency) |
+| `createChecklist()` | Checklists | Create checklist on task | [API Ref](https://developer.clickup.com/reference/createchecklist) |
+| `createChecklistItem()` | Checklists | Add item to checklist | [API Ref](https://developer.clickup.com/reference/createchecklistitem) |
+| `addTag()` | Tags | Add tag to task | [API Ref](https://developer.clickup.com/reference/addtagtotask) |
+| `removeTag()` | Tags | Remove tag from task | [API Ref](https://developer.clickup.com/reference/removetagfromtask) |
+
+### Examples
 
 | Example | Category | Description | API Docs |
 |---------|----------|-------------|----------|
 | [01-auth-user.ts](examples/01-auth-user.ts) | Authentication | Get authenticated user information | [API Ref](https://developer.clickup.com/reference/getauthorizeduser) |
 | [02-workspaces.ts](examples/02-workspaces.ts) | Hierarchy | List accessible workspaces | [API Ref](https://developer.clickup.com/reference/getauthorizedteams) |
-| [03-spaces.ts](examples/03-spaces.ts) | Hierarchy | List spaces in workspace | [API Ref](https://developer.clickup.com/reference/getspaces) |
-| [04-folders.ts](examples/04-folders.ts) | Hierarchy | List folders in space | [API Ref](https://developer.clickup.com/reference/getfolders) |
-| [05-lists.ts](examples/05-lists.ts) | Hierarchy | List task lists | [API Ref](https://developer.clickup.com/reference/getlists) |
-| [06-task-crud.ts](examples/06-task-crud.ts) | Tasks | Create, read, update, delete tasks | [API Ref](https://developer.clickup.com/reference/createtask) |
-| More examples coming... | - | - | - |
+
+### Infrastructure Features
+
+- ✅ **Automatic retry logic**: 5 attempts with exponential backoff (1s, 2s, 4s, 8s, 16s)
+- ✅ **Rate limit handling**: Respects `Retry-After` header on HTTP 429
+- ✅ **30-second timeout**: Configurable per-request timeout
+- ✅ **Debug logging**: Enable with `DEBUG=clickup:*` environment variable
+- ✅ **Token redaction**: Automatic redaction of sensitive data in logs
+- ✅ **Webhook signature verification**: HMAC-SHA256 validation
+- ✅ **TypeScript types**: Full type definitions for all API resources
+- ✅ **Pagination support**: Async generator for cursor-based pagination
 
 ## Quick Start
 
@@ -98,12 +130,30 @@ tests/
 
 ## Implementation Status
 
-🚧 **In Progress**: This is Phase 1 of implementation. Core infrastructure is being built.
+✅ **Phase 1-2 Complete**: Core infrastructure and client implemented
 
-- ✅ Project setup and configuration
-- ✅ Specification and planning complete
-- 🔄 Foundational types and HTTP client (in progress)
-- ⏳ Examples and tests (upcoming)
+**Completed**:
+- ✅ Project setup and configuration (TypeScript, ESLint, Prettier, Vitest)
+- ✅ Complete Spec Kit workflow (specify → clarify → plan → tasks)
+- ✅ HTTP client with retry logic and rate limiting
+- ✅ Core type definitions (User, Workspace, Space, Folder, List, Task)
+- ✅ Main ClickUpClient class with 19 methods
+- ✅ Webhook signature verification (HMAC-SHA256)
+- ✅ Debug logging with automatic token redaction
+- ✅ Unit tests with mocked HTTP (vitest + nock)
+- ✅ Integration test framework (gated on CLICKUP_API_TOKEN)
+- ✅ GitHub Actions CI/CD (lint, typecheck, unit tests on PR)
+- ✅ Examples for authentication and workspaces
+
+**API Coverage**: ~20% implemented (19 methods out of planned 90+ across all categories)
+
+**Next Steps** (Future PRs):
+- Additional examples for all implemented methods
+- Advanced task operations (subtasks, custom fields, attachments)
+- Webhooks (create, list, delete endpoints)
+- Comments, time tracking, goals, views
+- Complete example suite (25 scripts)
+- Expand integration test coverage
 
 See [tasks.md](specs/001-clickup-api-kitchen-sink/tasks.md) for detailed implementation plan.
 
