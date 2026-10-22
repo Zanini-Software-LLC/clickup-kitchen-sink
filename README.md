@@ -24,9 +24,13 @@ TypeScript client library with comprehensive API coverage:
 | `getWorkspaces()` | Workspaces | List accessible workspaces (teams) | [API Ref](https://developer.clickup.com/reference/getauthorizedteams) |
 | `getSpaces()` | Spaces | List spaces in workspace | [API Ref](https://developer.clickup.com/reference/getspaces) |
 | `getSpace()` | Spaces | Get space by ID | [API Ref](https://developer.clickup.com/reference/getspace) |
+| `createSpace()` | Spaces | Create new space | [API Ref](https://developer.clickup.com/reference/createspace) |
 | `getFolders()` | Folders | List folders in space | [API Ref](https://developer.clickup.com/reference/getfolders) |
+| `createFolder()` | Folders | Create folder in space | [API Ref](https://developer.clickup.com/reference/createfolder) |
 | `getLists()` | Lists | Get lists in folder | [API Ref](https://developer.clickup.com/reference/getlists) |
 | `getFolderlessLists()` | Lists | Get folderless lists in space | [API Ref](https://developer.clickup.com/reference/getfolderlesslists) |
+| `createList()` | Lists | Create list in folder | [API Ref](https://developer.clickup.com/reference/createlist) |
+| `createFolderlessList()` | Lists | Create folderless list | [API Ref](https://developer.clickup.com/reference/createfolderlesslist) |
 | `getTask()` | Tasks | Get task by ID | [API Ref](https://developer.clickup.com/reference/gettask) |
 | `createTask()` | Tasks | Create new task | [API Ref](https://developer.clickup.com/reference/createtask) |
 | `updateTask()` | Tasks | Update existing task | [API Ref](https://developer.clickup.com/reference/updatetask) |
@@ -39,6 +43,22 @@ TypeScript client library with comprehensive API coverage:
 | `createChecklistItem()` | Checklists | Add item to checklist | [API Ref](https://developer.clickup.com/reference/createchecklistitem) |
 | `addTag()` | Tags | Add tag to task | [API Ref](https://developer.clickup.com/reference/addtagtotask) |
 | `removeTag()` | Tags | Remove tag from task | [API Ref](https://developer.clickup.com/reference/removetagfromtask) |
+| `getCustomFields()` | Custom Fields | Get custom fields for list | [API Ref](https://developer.clickup.com/reference/getcustomfields) |
+| `setCustomFieldValue()` | Custom Fields | Set custom field value on task | [API Ref](https://developer.clickup.com/reference/setcustomfieldvalue) |
+| `createWebhook()` | Webhooks | Register webhook | [API Ref](https://developer.clickup.com/reference/createwebhook) |
+| `getWebhooks()` | Webhooks | List webhooks | [API Ref](https://developer.clickup.com/reference/getwebhooks) |
+| `updateWebhook()` | Webhooks | Update webhook | [API Ref](https://developer.clickup.com/reference/updatewebhook) |
+| `deleteWebhook()` | Webhooks | Delete webhook | [API Ref](https://developer.clickup.com/reference/deletewebhook) |
+| `getComments()` | Comments | Get comments on task | [API Ref](https://developer.clickup.com/reference/gettaskcomments) |
+| `createComment()` | Comments | Create comment on task | [API Ref](https://developer.clickup.com/reference/createtaskcomment) |
+| `createTimeEntry()` | Time Tracking | Create time entry | [API Ref](https://developer.clickup.com/reference/createtimeentry) |
+| `getTimeEntries()` | Time Tracking | Get time entries | [API Ref](https://developer.clickup.com/reference/gettimeentries) |
+| `getGoals()` | Goals | List goals in workspace | [API Ref](https://developer.clickup.com/reference/getgoals) |
+| `createGoal()` | Goals | Create goal | [API Ref](https://developer.clickup.com/reference/creategoal) |
+| `getViews()` | Views | Get workspace views | [API Ref](https://developer.clickup.com/reference/getteamviews) |
+| `getSpaceViews()` | Views | Get space views | [API Ref](https://developer.clickup.com/reference/getspaceviews) |
+| `getListViews()` | Views | Get list views | [API Ref](https://developer.clickup.com/reference/getlistviews) |
+| `getWorkspaceMembers()` | Members | Get workspace members | [API Ref](https://developer.clickup.com/reference/getteammembers) |
 
 ### Examples
 
@@ -46,6 +66,29 @@ TypeScript client library with comprehensive API coverage:
 |---------|----------|-------------|----------|
 | [01-auth-user.ts](examples/01-auth-user.ts) | Authentication | Get authenticated user information | [API Ref](https://developer.clickup.com/reference/getauthorizeduser) |
 | [02-workspaces.ts](examples/02-workspaces.ts) | Hierarchy | List accessible workspaces | [API Ref](https://developer.clickup.com/reference/getauthorizedteams) |
+| [03-spaces.ts](examples/03-spaces.ts) | Hierarchy | List, get, and create spaces | [API Ref](https://developer.clickup.com/reference/getspaces) |
+| [04-folders.ts](examples/04-folders.ts) | Hierarchy | List and create folders | [API Ref](https://developer.clickup.com/reference/getfolders) |
+| [05-lists.ts](examples/05-lists.ts) | Hierarchy | List and create lists | [API Ref](https://developer.clickup.com/reference/getlists) |
+| [06-task-crud.ts](examples/06-task-crud.ts) | Tasks | Complete task CRUD operations | [API Ref](https://developer.clickup.com/reference/createtask) |
+| [07-subtasks.ts](examples/07-subtasks.ts) | Tasks | Create and manage subtasks | [API Ref](https://developer.clickup.com/reference/createtask) |
+| [08-dependencies.ts](examples/08-dependencies.ts) | Tasks | Add/remove task dependencies | [API Ref](https://developer.clickup.com/reference/adddependency) |
+| [09-checklists.ts](examples/09-checklists.ts) | Tasks | Create checklists and items | [API Ref](https://developer.clickup.com/reference/createchecklist) |
+| [10-tags.ts](examples/10-tags.ts) | Tasks | Add and remove tags | [API Ref](https://developer.clickup.com/reference/addtagtotask) |
+| [11-assignees.ts](examples/11-assignees.ts) | Tasks | Manage task assignees | [API Ref](https://developer.clickup.com/reference/updatetask) |
+| [12-attachments.ts](examples/12-attachments.ts) | Tasks | View attachment metadata | [API Ref](https://developer.clickup.com/reference/gettask) |
+| [13-custom-fields.ts](examples/13-custom-fields.ts) | Custom Fields | Get and set custom field values | [API Ref](https://developer.clickup.com/reference/getcustomfields) |
+| [14-list-tasks.ts](examples/14-list-tasks.ts) | Tasks | List and filter tasks | [API Ref](https://developer.clickup.com/reference/gettasks) |
+| [15-rate-limiting.ts](examples/15-rate-limiting.ts) | Infrastructure | Rate limit handling demo | [API Ref](https://developer.clickup.com/reference/) |
+| [16-webhook-crud.ts](examples/16-webhook-crud.ts) | Webhooks | Complete webhook CRUD operations | [API Ref](https://developer.clickup.com/reference/createwebhook) |
+| [17-webhook-verification.ts](examples/17-webhook-verification.ts) | Webhooks | HMAC signature verification | [API Ref](https://developer.clickup.com/reference/webhooks) |
+| [18-comments.ts](examples/18-comments.ts) | Comments | Create and list comments | [API Ref](https://developer.clickup.com/reference/createtaskcomment) |
+| [19-time-tracking.ts](examples/19-time-tracking.ts) | Time Tracking | Create and get time entries | [API Ref](https://developer.clickup.com/reference/createtimeentry) |
+| [20-goals.ts](examples/20-goals.ts) | Goals | List and create goals | [API Ref](https://developer.clickup.com/reference/getgoals) |
+| [21-views.ts](examples/21-views.ts) | Views | Get views at different levels | [API Ref](https://developer.clickup.com/reference/getteamviews) |
+| [22-members.ts](examples/22-members.ts) | Members | List workspace members | [API Ref](https://developer.clickup.com/reference/getteammembers) |
+| [23-error-handling.ts](examples/23-error-handling.ts) | Infrastructure | Error handling patterns | [API Ref](https://developer.clickup.com/reference/) |
+| [24-pagination.ts](examples/24-pagination.ts) | Infrastructure | Pagination with async generators | [API Ref](https://developer.clickup.com/reference/gettasks) |
+| [99-end-to-end.ts](examples/99-end-to-end.ts) | End-to-End | Complete workflow demonstration | [API Ref](https://developer.clickup.com/reference/) |
 
 ### Infrastructure Features
 
