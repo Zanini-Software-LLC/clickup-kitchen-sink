@@ -18,11 +18,7 @@ export class HttpClient {
   private maxRetries: number;
 
   constructor(apiToken: string, options: HttpClientOptions = {}) {
-    const {
-      baseURL = 'https://api.clickup.com/api/v2',
-      timeout = 30000,
-      maxRetries = 5,
-    } = options;
+    const { baseURL = 'https://api.clickup.com/api/v2', timeout = 30000, maxRetries = 5 } = options;
 
     this.maxRetries = maxRetries;
 
@@ -60,9 +56,7 @@ export class HttpClient {
 
             // Get retry delay from Retry-After header or use exponential backoff
             const retryAfter = error.response.headers['retry-after'];
-            const delay = retryAfter
-              ? parseInt(retryAfter) * 1000
-              : Math.pow(2, retryCount) * 1000;
+            const delay = retryAfter ? parseInt(retryAfter) * 1000 : Math.pow(2, retryCount) * 1000;
 
             logRetry(`Rate limited, retry ${retryCount + 1}/${this.maxRetries}`, {
               delay: `${delay}ms`,

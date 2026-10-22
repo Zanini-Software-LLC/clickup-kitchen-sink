@@ -87,7 +87,9 @@ describe('HttpClient', () => {
       nock(baseURL).get('/user').reply(429, { err: 'Rate limited' }, { 'retry-after': '1' });
 
       // Second attempt: success
-      nock(baseURL).get('/user').reply(200, { user: { id: 123 } });
+      nock(baseURL)
+        .get('/user')
+        .reply(200, { user: { id: 123 } });
 
       const result = await client.get('/user');
       expect(result).toEqual({ user: { id: 123 } });
@@ -95,7 +97,9 @@ describe('HttpClient', () => {
 
     it('should respect Retry-After header', async () => {
       nock(baseURL).get('/user').reply(429, { err: 'Rate limited' }, { 'retry-after': '2' });
-      nock(baseURL).get('/user').reply(200, { user: { id: 123 } });
+      nock(baseURL)
+        .get('/user')
+        .reply(200, { user: { id: 123 } });
 
       const startTime = Date.now();
       await client.get('/user');

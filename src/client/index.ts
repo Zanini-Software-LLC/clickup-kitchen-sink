@@ -1,9 +1,9 @@
 /**
  * ClickUp API v2 Client
- * 
+ *
  * UNOFFICIAL reference implementation for educational purposes.
  * Not affiliated with or endorsed by ClickUp.
- * 
+ *
  * @see https://developer.clickup.com/reference/
  */
 
@@ -25,7 +25,7 @@ export class ClickUpClient {
 
   /**
    * Get authenticated user information
-   * 
+   *
    * @returns User information
    * @throws {ClickUpAPIError} If API request fails
    * @see https://developer.clickup.com/reference/getauthorizeduser
@@ -38,7 +38,7 @@ export class ClickUpClient {
 
   /**
    * Get accessible workspaces (teams)
-   * 
+   *
    * @returns Array of workspaces
    * @throws {ClickUpAPIError} If API request fails
    * @see https://developer.clickup.com/reference/getauthorizedteams
@@ -51,7 +51,7 @@ export class ClickUpClient {
 
   /**
    * Get spaces in a workspace
-   * 
+   *
    * @param workspaceId Workspace ID
    * @returns Array of spaces
    * @throws {ClickUpAPIError} If API request fails
@@ -65,7 +65,7 @@ export class ClickUpClient {
 
   /**
    * Get a specific space
-   * 
+   *
    * @param spaceId Space ID
    * @returns Space details
    * @throws {ClickUpAPIError} If space not found (404)
@@ -77,7 +77,7 @@ export class ClickUpClient {
 
   /**
    * Get folders in a space
-   * 
+   *
    * @param spaceId Space ID
    * @returns Array of folders
    * @throws {ClickUpAPIError} If API request fails
@@ -91,7 +91,7 @@ export class ClickUpClient {
 
   /**
    * Get lists in a folder
-   * 
+   *
    * @param folderId Folder ID
    * @returns Array of lists
    * @throws {ClickUpAPIError} If API request fails
@@ -105,7 +105,7 @@ export class ClickUpClient {
 
   /**
    * Get folderless lists in a space
-   * 
+   *
    * @param spaceId Space ID
    * @returns Array of lists
    * @throws {ClickUpAPIError} If API request fails
@@ -118,7 +118,7 @@ export class ClickUpClient {
 
   /**
    * Get a task by ID
-   * 
+   *
    * @param taskId Task ID
    * @param options Optional query parameters
    * @returns Task details
@@ -139,7 +139,7 @@ export class ClickUpClient {
 
   /**
    * Create a new task
-   * 
+   *
    * @param listId List ID where task will be created
    * @param data Task creation data
    * @returns Created task
@@ -175,7 +175,7 @@ export class ClickUpClient {
 
   /**
    * Update a task
-   * 
+   *
    * @param taskId Task ID
    * @param data Task update data
    * @returns Updated task
@@ -206,7 +206,7 @@ export class ClickUpClient {
 
   /**
    * Delete a task
-   * 
+   *
    * @param taskId Task ID
    * @throws {ClickUpAPIError} If task not found (404)
    * @see https://developer.clickup.com/reference/deletetask
@@ -218,7 +218,7 @@ export class ClickUpClient {
 
   /**
    * Get tasks in a list (single page)
-   * 
+   *
    * @param listId List ID
    * @param options Query options
    * @returns Tasks and optional cursor for next page
@@ -245,9 +245,12 @@ export class ClickUpClient {
       date_updated_lt?: number;
     },
   ): Promise<{ tasks: Task[]; cursor?: string }> {
-    const response = await this.http.get<{ tasks: Task[]; last_page?: boolean }>(`/list/${listId}/task`, {
-      params: options,
-    });
+    const response = await this.http.get<{ tasks: Task[]; last_page?: boolean }>(
+      `/list/${listId}/task`,
+      {
+        params: options,
+      },
+    );
     return {
       tasks: response.tasks,
       cursor: response.last_page ? undefined : 'has_more',
@@ -257,7 +260,7 @@ export class ClickUpClient {
   /**
    * Paginate through all tasks in a list
    * Automatically fetches all pages using cursor-based pagination (FR-006)
-   * 
+   *
    * @param listId List ID
    * @param options Query options
    * @yields Arrays of tasks for each page
@@ -296,7 +299,7 @@ export class ClickUpClient {
 
   /**
    * Add a dependency between tasks
-   * 
+   *
    * @param taskId Task ID that depends on another
    * @param dependsOn Task ID that this task depends on
    * @param dependencyOf Optional reverse dependency
@@ -318,18 +321,14 @@ export class ClickUpClient {
 
   /**
    * Delete a task dependency
-   * 
+   *
    * @param taskId Task ID
    * @param dependsOn Task ID to remove dependency from
    * @param dependencyOf Optional reverse dependency
    * @throws {ClickUpAPIError} If API request fails
    * @see https://developer.clickup.com/reference/deletedependency
    */
-  async deleteDependency(
-    taskId: string,
-    dependsOn: string,
-    dependencyOf?: string,
-  ): Promise<void> {
+  async deleteDependency(taskId: string, dependsOn: string, dependencyOf?: string): Promise<void> {
     await this.http.delete(`/task/${taskId}/dependency`, {
       params: { depends_on: dependsOn, dependency_of: dependencyOf },
     });
@@ -337,7 +336,7 @@ export class ClickUpClient {
 
   /**
    * Create a checklist on a task
-   * 
+   *
    * @param taskId Task ID
    * @param data Checklist data
    * @returns Created checklist
@@ -351,7 +350,7 @@ export class ClickUpClient {
 
   /**
    * Create a checklist item
-   * 
+   *
    * @param checklistId Checklist ID
    * @param data Item data
    * @returns Created checklist item
@@ -368,7 +367,7 @@ export class ClickUpClient {
 
   /**
    * Add a tag to a task
-   * 
+   *
    * @param taskId Task ID
    * @param tagName Tag name
    * @throws {ClickUpAPIError} If API request fails
@@ -381,7 +380,7 @@ export class ClickUpClient {
 
   /**
    * Remove a tag from a task
-   * 
+   *
    * @param taskId Task ID
    * @param tagName Tag name
    * @throws {ClickUpAPIError} If API request fails

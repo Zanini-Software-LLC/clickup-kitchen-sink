@@ -23,9 +23,7 @@ export function redactSensitiveData(data: any): any {
     const redacted: any = {};
     for (const [key, value] of Object.entries(data)) {
       const lowerKey = key.toLowerCase();
-      const isSensitive = SENSITIVE_KEYS.some((sensitiveKey) =>
-        lowerKey.includes(sensitiveKey),
-      );
+      const isSensitive = SENSITIVE_KEYS.some((sensitiveKey) => lowerKey.includes(sensitiveKey));
 
       if (isSensitive) {
         redacted[key] = '[REDACTED]';

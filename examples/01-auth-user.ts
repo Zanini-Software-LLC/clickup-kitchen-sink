@@ -59,7 +59,9 @@ async function main() {
         console.error('❌ Permission denied: You do not have access to this resource');
       } else if (error.statusCode === 429) {
         console.error('❌ Rate limit exceeded: Too many requests');
-        console.error('The client should have automatically retried. This means all retries failed.');
+        console.error(
+          'The client should have automatically retried. This means all retries failed.',
+        );
       } else {
         console.error(`❌ API Error (${error.statusCode}):`, error.message);
       }
