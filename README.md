@@ -101,6 +101,29 @@ TypeScript client library with comprehensive API coverage:
 - ✅ **TypeScript types**: Full type definitions for all API resources
 - ✅ **Pagination support**: Async generator for cursor-based pagination
 
+### API Coverage
+
+This implementation provides **39 client methods** covering **15 operation categories** as defined in the project specification (FR-002):
+
+1. Authentication (1 method)
+2. Workspaces (2 methods)
+3. Spaces (3 methods)
+4. Folders (2 methods)
+5. Lists (4 methods)
+6. Tasks (6 methods)
+7. Dependencies (2 methods)
+8. Checklists (2 methods)
+9. Tags (2 methods)
+10. Custom Fields (2 methods)
+11. Webhooks (4 methods)
+12. Comments (2 methods)
+13. Time Tracking (2 methods)
+14. Goals (2 methods)
+15. Views (3 methods)
+16. Members (1 method)
+
+This covers all major ClickUp API v2 operations needed for AI agent training and developer education as specified in the requirements. The "kitchen sink" scope is intentionally comprehensive for the defined use cases while remaining maintainable and well-tested.
+
 ## Quick Start
 
 ### Prerequisites

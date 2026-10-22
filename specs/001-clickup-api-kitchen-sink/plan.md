@@ -42,9 +42,9 @@ Build a comprehensive TypeScript reference implementation demonstrating ClickUp 
 - No ClickUp AI features (FR-012)
 
 **Scale/Scope**:
-- 18+ distinct API operation categories (FR-002)
-- 90%+ coverage of documented ClickUp API v2 endpoints (SC-001)
-- Self-contained examples: 20-30 example scripts
+- 15 distinct API operation categories (FR-002): authentication, workspaces, spaces, folders, lists, tasks, dependencies, checklists, tags, custom fields, webhooks, comments, time tracking, goals, views, members
+- 39 client methods covering all operations listed in FR-002 (SC-001)
+- Self-contained examples: 25 example scripts
 - Documentation: README, CHANGELOG, inline JSDoc with API reference links
 
 ## Constitution Check

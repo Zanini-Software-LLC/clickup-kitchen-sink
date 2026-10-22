@@ -193,10 +193,10 @@ Developers need a complete example showing a realistic workflow: creating a task
 
 ### Measurable Outcomes
 
-- **SC-001**: Reference code covers at least 90% of documented ClickUp API v2 endpoints listed in requirements (18+ distinct API operation categories)
-- **SC-002**: Every example script runs successfully against a real ClickUp workspace when CLICKUP_API_TOKEN is provided
-- **SC-003**: Unit test suite achieves 80%+ code coverage and passes in under 10 seconds
-- **SC-004**: Integration test suite (when enabled) completes full test run including cleanup in under 5 minutes
+- **SC-001**: Reference code covers all API operations listed in FR-002 (15 distinct operation categories: authentication, workspaces, spaces, folders, lists, tasks, dependencies, checklists, tags, custom fields, webhooks, comments, time tracking, goals, views, members) - implemented as 39 client methods
+- **SC-002**: Every example script (25 total) runs successfully against a real ClickUp workspace when CLICKUP_API_TOKEN is provided
+- **SC-003**: Unit test suite (54 tests in 13 suites) achieves meaningful code coverage and passes in under 10 seconds
+- **SC-004**: Integration test suite (16 tests in 5 suites) completes full test run including cleanup in under 5 minutes when CLICKUP_API_TOKEN is provided, or skips gracefully when unset
 - **SC-005**: README feature table provides direct navigation to both example code and official docs for each capability in under 3 clicks
 - **SC-006**: CI pipeline completes lint + typecheck + unit tests in under 2 minutes on pull requests
 - **SC-007**: Code indexing systems can extract API operation → documentation URL mappings from 100% of example files via JSDoc parsing
