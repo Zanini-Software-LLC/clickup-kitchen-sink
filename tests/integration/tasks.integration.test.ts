@@ -28,7 +28,7 @@ describe.skipIf(!API_TOKEN)('Task Integration Tests', () => {
     const spaces = await client.getSpaces(workspaceId);
     spaceId = spaces[0].id;
 
-    let lists = await client.getFolderlessLists(spaceId);
+    const lists = await client.getFolderlessLists(spaceId);
     if (lists.length === 0) {
       const newList = await client.createFolderlessList(spaceId, {
         name: 'Integration Test List (Auto)',
