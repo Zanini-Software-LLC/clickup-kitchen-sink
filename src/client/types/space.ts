@@ -26,4 +26,9 @@ export interface SpaceFeatures {
   checklists: { enabled: boolean };
   zoom: { enabled: boolean };
   milestones: { enabled: boolean };
+  tags: { enabled: boolean };
+  time_estimates: { enabled: boolean };
+  remap_dependencies: { enabled: boolean };
+  dependency_warning: { enabled: boolean };
+  portfolios: { enabled: boolean };
 }

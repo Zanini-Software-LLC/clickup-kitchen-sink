@@ -5,10 +5,10 @@ export interface Workspace {
   name: string;
   color: string;
   avatar: string | null;
-  members: Member[];
+  members: WorkspaceMember[];
 }
 
-export interface Member {
+export interface WorkspaceMember {
   user: User;
   invited_by?: {
     id: number;

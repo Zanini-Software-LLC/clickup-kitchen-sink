@@ -78,7 +78,9 @@ async function main() {
   });
 
   console.log(`✅ Created space: ${newSpace.name} (${newSpace.id})`);
-  console.log('\n💡 Remember to delete test spaces manually in ClickUp to keep your workspace clean.');
+  console.log(
+    '\n💡 Remember to delete test spaces manually in ClickUp to keep your workspace clean.',
+  );
 }
 
 main().catch((error) => {

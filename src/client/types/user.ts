@@ -12,4 +12,5 @@ export interface User {
   week_start_day: number;
   global_font_support: boolean;
   timezone: string;
+  role?: string;
 }

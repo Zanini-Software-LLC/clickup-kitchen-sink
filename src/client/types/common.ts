@@ -18,6 +18,8 @@ export interface Priority {
 }
 
 export class ClickUpAPIError extends Error {
+  public code: string;
+
   constructor(
     message: string,
     public statusCode: number,
@@ -26,6 +28,7 @@ export class ClickUpAPIError extends Error {
   ) {
     super(message);
     this.name = 'ClickUpAPIError';
+    this.code = errorCode || `HTTP_${statusCode}`;
     Error.captureStackTrace(this, this.constructor);
   }
 }

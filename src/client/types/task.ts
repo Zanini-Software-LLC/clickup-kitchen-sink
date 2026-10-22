@@ -23,7 +23,7 @@ export interface Task {
   start_date: string | null;
   points: number | null;
   time_estimate: number | null;
-  custom_fields: CustomFieldValue[];
+  custom_fields: TaskCustomFieldValue[];
   dependencies: Dependency[];
   linked_tasks: LinkedTask[];
   team_id: string;
@@ -44,6 +44,16 @@ export interface Task {
   space: {
     id: string;
   };
+  subtasks?: Task[];
+  attachments?: Attachment[];
+}
+
+export interface Attachment {
+  id: string;
+  date: string;
+  title?: string;
+  url: string;
+  user: User;
 }
 
 export interface Tag {
@@ -89,7 +99,7 @@ export interface ChecklistItem {
   children: ChecklistItem[];
 }
 
-export interface CustomFieldValue {
+export interface TaskCustomFieldValue {
   id: string;
   name: string;
   type: string;

@@ -14,11 +14,11 @@ import { Space } from './types/space.js';
 import { Folder } from './types/folder.js';
 import { List } from './types/list.js';
 import { Task, Dependency, Checklist, ChecklistItem } from './types/task.js';
-import { CustomField, CustomFieldValue } from './types/custom-field.js';
+import { CustomField } from './types/custom-field.js';
 import { Webhook, WebhookEvent } from './types/webhook.js';
 import { Comment } from './types/comment.js';
 import { TimeEntry } from './types/time-entry.js';
-import { Goal, KeyResult } from './types/goal.js';
+import { Goal } from './types/goal.js';
 import { View } from './types/view.js';
 import { Member } from './types/member.js';
 import { logPagination } from '../utils/logger.js';
@@ -413,7 +413,12 @@ export class ClickUpClient {
       name: string;
       multiple_assignees?: boolean;
       features?: {
-        due_dates?: { enabled: boolean; start_date: boolean; remap_due_dates: boolean; remap_closed_due_date: boolean };
+        due_dates?: {
+          enabled: boolean;
+          start_date: boolean;
+          remap_due_dates: boolean;
+          remap_closed_due_date: boolean;
+        };
         time_tracking?: { enabled: boolean };
         tags?: { enabled: boolean };
         time_estimates?: { enabled: boolean };
@@ -651,9 +656,9 @@ export class ClickUpClient {
       tid?: string;
     },
   ): Promise<TimeEntry> {
-    return await this.http.post<{ data: TimeEntry }>(`/team/${workspaceId}/time_entries`, data).then(
-      (res) => res.data,
-    );
+    return await this.http
+      .post<{ data: TimeEntry }>(`/team/${workspaceId}/time_entries`, data)
+      .then((res) => res.data);
   }
 
   /**
@@ -722,7 +727,9 @@ export class ClickUpClient {
       color?: string;
     },
   ): Promise<Goal> {
-    return await this.http.post<{ goal: Goal }>(`/team/${workspaceId}/goal`, data).then((res) => res.goal);
+    return await this.http
+      .post<{ goal: Goal }>(`/team/${workspaceId}/goal`, data)
+      .then((res) => res.goal);
   }
 
   /**

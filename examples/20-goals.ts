@@ -41,7 +41,9 @@ async function main() {
 
   console.log(`✅ Created goal: ${goal.name} (${goal.id})`);
   console.log(`   - Description: ${goal.description}`);
-  console.log(`   - Due Date: ${goal.due_date ? new Date(parseInt(goal.due_date)).toISOString() : 'None'}`);
+  console.log(
+    `   - Due Date: ${goal.due_date ? new Date(parseInt(goal.due_date)).toISOString() : 'None'}`,
+  );
   console.log(`   - Color: ${goal.color}`);
   console.log(`   - Completion: ${goal.percent_completed}%`);
 

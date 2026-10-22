@@ -65,7 +65,9 @@ async function main() {
     },
   });
 
-  console.log(`✅ Assignees after re-add: ${reAssignedTask.assignees.map((a) => a.username).join(', ')}`);
+  console.log(
+    `✅ Assignees after re-add: ${reAssignedTask.assignees.map((a) => a.username).join(', ')}`,
+  );
 
   console.log('\n✅ Assignee operations complete!');
   console.log('💡 Clean up tasks in ClickUp after experimenting.');

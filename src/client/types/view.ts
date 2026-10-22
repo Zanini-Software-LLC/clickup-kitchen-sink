@@ -5,7 +5,20 @@
 export interface View {
   id: string;
   name: string;
-  type: 'list' | 'board' | 'calendar' | 'gantt' | 'timeline' | 'workload' | 'activity' | 'map' | 'table' | 'box' | 'doc' | 'embed' | 'form';
+  type:
+    | 'list'
+    | 'board'
+    | 'calendar'
+    | 'gantt'
+    | 'timeline'
+    | 'workload'
+    | 'activity'
+    | 'map'
+    | 'table'
+    | 'box'
+    | 'doc'
+    | 'embed'
+    | 'form';
   parent: {
     id: string;
     type: number;

@@ -29,7 +29,7 @@ const client = new ClickUpClient(apiToken);
 
 async function main() {
   console.log('🚀 ClickUp API v2 End-to-End Workflow\n');
-  console.log('=' .repeat(60));
+  console.log('='.repeat(60));
 
   console.log('\n📊 Step 1: Get workspace information');
   const workspaces = await client.getWorkspaces();
@@ -46,7 +46,12 @@ async function main() {
     name: `E2E Test Space ${Date.now()}`,
     multiple_assignees: true,
     features: {
-      due_dates: { enabled: true, start_date: true, remap_due_dates: true, remap_closed_due_date: false },
+      due_dates: {
+        enabled: true,
+        start_date: true,
+        remap_due_dates: true,
+        remap_closed_due_date: false,
+      },
       time_tracking: { enabled: true },
       tags: { enabled: true },
       custom_fields: { enabled: true },
