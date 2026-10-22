@@ -40,9 +40,7 @@ describe('ClickUpClient - Views', () => {
   describe('getSpaceViews', () => {
     it('should fetch space views', async () => {
       const spaceId = 'space123';
-      const mockViews = [
-        { id: 'view1', name: 'Calendar View', type: 'calendar' as const },
-      ];
+      const mockViews = [{ id: 'view1', name: 'Calendar View', type: 'calendar' as const }];
 
       nock(BASE_URL).get(`/space/${spaceId}/view`).reply(200, { views: mockViews });
 
@@ -54,9 +52,7 @@ describe('ClickUpClient - Views', () => {
   describe('getListViews', () => {
     it('should fetch list views', async () => {
       const listId = 'list123';
-      const mockViews = [
-        { id: 'view1', name: 'Gantt View', type: 'gantt' as const },
-      ];
+      const mockViews = [{ id: 'view1', name: 'Gantt View', type: 'gantt' as const }];
 
       nock(BASE_URL).get(`/list/${listId}/view`).reply(200, { views: mockViews });
 

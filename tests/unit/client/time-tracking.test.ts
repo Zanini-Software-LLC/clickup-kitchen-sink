@@ -56,9 +56,7 @@ describe('ClickUpClient - Time Tracking', () => {
         { id: 'entry2', description: 'Entry 2', duration: '7200000' },
       ];
 
-      nock(BASE_URL)
-        .get(`/team/${workspaceId}/time_entries`)
-        .reply(200, { data: mockEntries });
+      nock(BASE_URL).get(`/team/${workspaceId}/time_entries`).reply(200, { data: mockEntries });
 
       const entries = await client.getTimeEntries(workspaceId);
       expect(entries).toEqual(mockEntries);
